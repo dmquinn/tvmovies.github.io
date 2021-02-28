@@ -296,6 +296,6 @@ document.addEventListener("mousemove", (e) => {
 	});
 });
 
-document
-	.getElementById("popup")
-	.addEventListener("click", (e) => e.target.classList.remove("visible"));
+// document
+// 	.getElementById("popup")
+// 	.addEventListener("click", (e) => e.target.classList.remove("visible"));
