@@ -168,14 +168,18 @@ function tvMode() {
           <span class="${getClassByRate(vote_average)}">${vote_average}</span>
             </div>
             <div class="overview">
-          <h3>Overview</h3>
           ${overview}
         </div>
 		`;
-			if (!poster_path.includes("null")) {
-				main.appendChild(movieEl);
-				document.body.appendChild(sidebar);
-			}
+			movieEl.img.addEventListener("click", () => {
+				console.log("clicked");
+				document.getElementById("popup").classList.add("visible");
+
+				if (!poster_path.includes("null")) {
+					main.appendChild(movieEl);
+					document.body.appendChild(sidebar);
+				}
+			});
 		});
 		function showHeaderTv() {
 			const topImage = document.querySelector(".imageHeader");
@@ -291,3 +295,7 @@ document.addEventListener("mousemove", (e) => {
 		document.documentElement.style.setProperty("--cursorY2", Y2 + "px");
 	});
 });
+
+document
+	.getElementById("popup")
+	.addEventListener("click", (e) => e.target.classList.remove("visible"));
