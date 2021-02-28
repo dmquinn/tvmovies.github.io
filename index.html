@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>Movie App</title>
+	</head>
+	<body>
+		<header>
+			<button class="movieTab" onclick="movieMode()">MOVIES</button>
+			<button class="tvTab" onclick="tvMode()">TV SHOWS</button>
+			<form id="form">
+				<input
+					type="text"
+					id="search"
+					class="search"
+					placeholder="Search"
+				/>
+			</form>
+		</header>
+		<div class="row mb-5 headSection">
+			<div class="col-12">
+				<div class="contianer">
+					<div class="imageHeader">
+						<div class="overlay"></div>
+						<h1 class="headerhOne"></h1>
+						<p class="headerhTwo mt-5"></p>
+						<p class="headerhThree mt-5"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-2 mb-5 push">
+				<div class="text"></div>
+			</div>
+		</div>
+
+		<main id="main"></main>
+		<script src="movies.js"></script>
+	</body>
+</html>
