@@ -1,284 +1,575 @@
-:root {
-	--primary-color: #000000;
-	--secondary-color: #2c2c2c;
-}
-
-* {
-	box-sizing: border-box;
-	letter-spacing: 1.5px;
-	font-smooth: always;
-
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body {
-	overflow-x: hidden;
-	background-color: var(--primary-color);
-	font-family: "Poppins", sans-serif;
-	margin: 0;
-}
-
 header {
-	padding: 1rem;
-	display: flex;
-	justify-content: flex-end;
-	background-color: none;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: none;
 }
 
-.push {
-	position: relative;
-	right: 350px;
-}
-.text {
-	width: 200px;
-	position: relative;
-	top: 300px;
-	left: 180px;
-}
-.sideShows,
-.sideMovies {
-	position: absolute;
-	height: 100vh;
-	width: 20px;
-	background: rgba(0, 245, 192, 0.171);
-	left: 0px;
-	top: 0px;
-}
-.sideMovies {
-	background: red;
-}
-.imageHeader {
-	position: relative;
-	height: 100vh;
-	width: 100vw;
-	background-size: cover;
-	transition: 0.9s;
-}
 .overlay {
-	position: relative;
-	height: 100vh;
-	width: 100vw;
-	background: linear-gradient(rgba(0, 0, 0, 0), black);
-	z-index: 999;
+  position: relative;
+  height: 110vh;
+  width: 110vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(black));
+  background: linear-gradient(rgba(0, 0, 0, 0), black);
+  z-index: 9;
 }
+
+.imageHeader {
+  position: relative;
+  height: 110vh;
+  width: 110vw;
+  background-size: cover;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+  overflow: hidden;
+  -webkit-animation: move 9s linear infinite;
+          animation: move 9s linear infinite;
+}
+
 .headerhOne,
 .headerhTwo,
 .headerhThree {
-	width: 500px;
-	position: relative;
-	color: white;
-	bottom: 300px;
-	z-index: 99999;
-	left: 200px;
+  width: 500px;
+  position: relative;
+  color: white;
+  bottom: 300px;
+  z-index: 99999;
+  left: 200px;
+  -webkit-animation: cancel 9s linear infinite;
+          animation: cancel 9s linear infinite;
 }
+
 .headerhOne,
 h1 {
-	font-family: "Kulim Park", sans-serif;
+  font-family: "Kulim Park", sans-serif;
 }
+
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translate3d(0%, 0%);
+            transform: translate3d(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate3d(-5%, -6%, 0);
+            transform: translate3d(-5%, -6%, 0);
+  }
+}
+
+@keyframes move {
+  0% {
+    -webkit-transform: translate3d(0%, 0%);
+            transform: translate3d(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate3d(-5%, -6%, 0);
+            transform: translate3d(-5%, -6%, 0);
+  }
+}
+
+@-webkit-keyframes cancel {
+  0% {
+    -webkit-transform: translate3d(0%, 0%);
+            transform: translate3d(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate3d(5%, 6%, 0);
+            transform: translate3d(5%, 6%, 0);
+  }
+}
+
+@keyframes cancel {
+  0% {
+    -webkit-transform: translate3d(0%, 0%);
+            transform: translate3d(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate3d(5%, 6%, 0);
+            transform: translate3d(5%, 6%, 0);
+  }
+}
+
 .movieTab,
 .tvTab {
-	font-size: 12px;
-	color: white;
-	position: absolute;
-	top: 30px;
-	left: 55px;
-	z-index: 999999;
-	outline: none;
-	border: none;
-	background: none;
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 30px;
+  left: 55px;
+  z-index: 999999;
+  outline: none;
+  border: none;
+  background: none;
 }
-.popularWeek {
-	/* color: white; */
-}
+
 .tvTab {
-	top: 90px;
-	left: 0px;
-	transform: rotate(-90deg);
+  top: 90px;
+  left: 0px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
+
 .tvTab:focus,
 .movieTab:focus {
-	border-top: 1px solid white;
-	outline: none;
+  border-top: 1px solid white;
+  outline: none;
 }
+
 .search {
-	background-color: transparent;
-	border: 1px solid rgb(187, 187, 187);
-	font-family: inherit;
-	font-size: 1rem;
-	padding: 0.5rem 1rem;
-	color: #fff;
-	position: relative;
-	z-index: 9999;
+  background-color: transparent;
+  border: 1px solid #bbbbbb;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  position: relative;
+  z-index: 9999;
 }
+
 .headSection {
-	position: relative;
-	bottom: 75px;
+  position: relative;
+  bottom: 75px;
+}
+
+.search::-webkit-input-placeholder {
+  color: white;
+}
+
+.search:-ms-input-placeholder {
+  color: white;
+}
+
+.search::-ms-input-placeholder {
+  color: white;
 }
 
 .search::placeholder {
-	color: white;
+  color: white;
 }
 
 .search:focus {
-	outline: none;
-	background-color: rgba(187, 187, 187, 0.226);
-	color: black;
+  outline: none;
+  background-color: rgba(187, 187, 187, 0.226);
+  color: black;
+}
+
+.dropdown {
+  position: relative;
+  font-family: Arial;
+  z-index: 999999;
+  border: 1px solid white;
+}
+
+.dropdown select {
+  display: none;
+  /*hide original SELECT element:*/
+}
+
+.dropdown select {
+  display: none;
+  /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 1px solid white;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: rgba(30, 143, 255, 0);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  cursor: pointer;
+  --cursorX: 50vw;
+  --cursorY: 50vh;
+  --cursorX2: 50vw;
+  --cursorY2: 50vh;
+}
+
+:root:root:before {
+  content: "";
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: normal, overlay;
+  background-position: center center;
+  background-size: auto, auto, cover;
+  background-image: radial-gradient(circle 16vmax at var(--cursorX2) var(--cursorY2), rgba(255, 7, 7, 0) 30%, rgba(0, 5, 5, 0.1) 40%, rgba(5, 5, 0, 0.5) 60%, rgba(0, 0, 0, 0.75) 70%, rgba(0, 0, 0, 0.95) 100%), radial-gradient(circle 12vmax at var(--cursorX) var(--cursorY), rgba(255, 255, 255, 0.185) 30%, rgba(255, 255, 255, 0.123) 50%, rgba(247, 0, 255, 0.05) 100%);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  letter-spacing: 1.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: black;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+header {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: none;
+}
+
+.push {
+  position: relative;
+  right: 350px;
+}
+
+.text {
+  width: 200px;
+  position: relative;
+  top: 300px;
+  left: 180px;
+}
+
+.sideShows,
+.sideMovies {
+  position: absolute;
+  height: 100vh;
+  width: 20px;
+  background: rgba(0, 245, 192, 0.171);
+  left: 0px;
+  top: 0px;
+}
+
+.sideMovies {
+  background: red;
+}
+
+.imageHeader {
+  position: relative;
+  height: 110vh;
+  width: 110vw;
+  background-size: cover;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+  overflow: hidden;
+  -webkit-animation: move 9s linear infinite;
+          animation: move 9s linear infinite;
+}
+
+.overlay {
+  position: relative;
+  height: 110vh;
+  width: 110vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(black));
+  background: linear-gradient(rgba(0, 0, 0, 0), black);
+  z-index: 9;
+}
+
+select {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  position: relative;
+  z-index: 9999999;
+}
+
+.headerhOne,
+.headerhTwo,
+.headerhThree {
+  width: 500px;
+  position: relative;
+  color: white;
+  bottom: 300px;
+  z-index: 99999;
+  left: 200px;
+  -webkit-animation: cancel 9s linear infinite;
+          animation: cancel 9s linear infinite;
+}
+
+.headerhOne,
+h1 {
+  font-family: "Kulim Park", sans-serif;
+}
+
+@keyframes move {
+  0% {
+    -webkit-transform: translate3d(0%, 0%);
+            transform: translate3d(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate3d(-5%, -6%, 0);
+            transform: translate3d(-5%, -6%, 0);
+  }
+}
+
+@keyframes cancel {
+  0% {
+    -webkit-transform: translate3d(0%, 0%);
+            transform: translate3d(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate3d(5%, 6%, 0);
+            transform: translate3d(5%, 6%, 0);
+  }
+}
+
+.movieTab,
+.tvTab {
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 30px;
+  left: 55px;
+  z-index: 999999;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.tvTab {
+  top: 90px;
+  left: 0px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.tvTab:focus,
+.movieTab:focus {
+  border-top: 1px solid white;
+  outline: none;
+}
+
+.search {
+  background-color: transparent;
+  border: 1px solid #bbbbbb;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  position: relative;
+  z-index: 9999;
+}
+
+.headSection {
+  position: relative;
+  bottom: 75px;
+}
+
+.search::-webkit-input-placeholder {
+  color: white;
+}
+
+.search:-ms-input-placeholder {
+  color: white;
+}
+
+.search::-ms-input-placeholder {
+  color: white;
+}
+
+.search::placeholder {
+  color: white;
+}
+
+.search:focus {
+  outline: none;
+  background-color: rgba(187, 187, 187, 0.226);
+  color: black;
 }
 
 main {
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .movie {
-	position: relative;
-	width: 300px;
-	margin: 1rem;
-	background: rgba(253, 253, 253, 0.055);
-	/* background: linear-gradient(
+  position: relative;
+  width: 300px;
+  margin: 1rem;
+  background: rgba(253, 253, 253, 0.055);
+  /* background: linear-gradient(
 		90deg,
 		rgba(255, 255, 255, 0.411) 0%,
 		rgba(166, 165, 167, 0.404) 59%,
 		rgb(73, 73, 73) 78%,
 		rgba(0, 0, 0, 1) 92%
 	); */
-	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-	position: relative;
-	overflow: hidden;
-	border-radius: 3px;
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
 }
 
 .movie img {
-	width: 100%;
+  width: 100%;
 }
 
 .movie-info {
-	color: #eee;
-	display: flex;
-	text-align: center;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0.5rem 1rem 1rem;
-	letter-spacing: 0.5px;
+  color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
 }
 
 .movie-info h3 {
-	margin-top: 0;
-	text-shadow: 2px 2px 6px black;
-	font-weight: bold;
+  margin-top: 0;
+  text-shadow: 2px 2px 6px black;
+  font-weight: bold;
 }
 
 .movie-info span {
-	background-color: var(--primary-color);
-	padding: 0.25rem 0.5rem;
-	border-radius: 3px;
-	font-weight: bold;
+  background-color: black;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
 }
 
 .movie-info span.good {
-	color: rgb(0, 255, 170);
+  color: #00ffaa;
 }
 
 .movie-info span.medium {
-	color: rgb(241, 243, 107);
+  color: #f1f36b;
 }
 
 .movie-info span.bad {
-	color: rgb(218, 64, 64);
+  color: #da4040;
 }
 
 .overview {
-	background-color: rgba(0, 0, 0, 0.836);
-	padding: 2rem;
-	position: absolute;
-	color: rgb(247, 247, 247);
-	left: 0;
-	bottom: 0;
-	right: 0;
-	max-height: 100%;
-	opacity: 0;
-	/* transform: translateY(101%); */
-	object-fit: cover;
-	overflow-y: hidden;
-	transition: 0.3s;
-}
-img:hover {
-	filter: brightness(50%);
-	transition: 0.5s;
-}
-.movie:hover .overview {
-	transition: 0.5s;
-	opacity: 1;
-}
-@media (max-width: 400px) {
-	.headerhOne,
-	.headerhTwo,
-	.headerhThree {
-		left: 10px;
-		width: 100%;
-	}
-}
-:root {
-	cursor: pointer;
-	--cursorX: 50vw;
-	--cursorY: 50vh;
-	--cursorX2: 50vw;
-	--cursorY2: 50vh;
+  background-color: rgba(0, 0, 0, 0.836);
+  padding: 2rem;
+  position: absolute;
+  color: #f7f7f7;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  max-height: 100%;
+  opacity: 0;
+  /* transform: translateY(101%); */
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow-y: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-:root:before {
-	content: "";
-	position: fixed;
-	display: block;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-blend-mode: normal, overlay;
-	background-position: center center;
-	background-size: auto, auto, cover;
-	background-image: radial-gradient(
-			circle 16vmax at var(--cursorX2) var(--cursorY2),
-			rgba(255, 7, 7, 0) 30%,
-			rgba(0, 5, 5, 0.1) 40%,
-			rgba(5, 5, 0, 0.5) 60%,
-			rgba(0, 0, 0, 0.75) 70%,
-			rgba(0, 0, 0, 0.95) 100%
-		),
-		radial-gradient(
-			circle 12vmax at var(--cursorX) var(--cursorY),
-			rgba(255, 255, 255, 0.185) 30%,
-			rgba(255, 255, 255, 0.123) 50%,
-			rgba(247, 0, 255, 0.05) 100%
-		);
+img:hover {
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.movie:hover .overview {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 1;
+}
+
+@media (max-width: 400px) {
+  .headerhOne,
+  .headerhTwo,
+  .headerhThree {
+    left: 10px;
+    width: 100%;
+  }
 }
 
 #popup {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.75);
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
 }
 
-#popup.visible {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+#popupvisible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-
-/* #popup-content {
-  width: 500px;
-  flex-direction:column;
-  height: 400px;
-  background:white;
-  border-radius:5px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-} */
+/*# sourceMappingURL=style.css.map */

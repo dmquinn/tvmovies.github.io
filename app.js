@@ -3,29 +3,33 @@ const API_URL_MOVIES =
 const API_URL_TV =
 	"https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1";
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
-const SEARCH_API_MOVIES =
-	'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="';
-const SEARCH_API_TV =
-	'https://api.themoviedb.org/3/search/tv?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="';
+let SEARCH_API;
+
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const genre = document.querySelector("#genre");
+console.log("hello", genre.value);
+genre.addEventListener("change", (e) => {
+	console.log("hello", e);
+});
+
 movieMode();
+
 let topImage;
 let tophOne;
 let tophTwo;
 let tophThree = document.querySelector(".headerhThree");
 let random = Math.floor(Math.random() * Math.floor(20));
-// let firstImage = movies[random];
 
 let mode;
 mode = localStorage.getItem("mode");
 
 if (mode === "tv") {
 	clearInterval(intervalMovie);
+
 	tvMode();
 } else if (mode === "movie") {
-	// clearInterval(intervalShow);
 	clearInterval(intervalShow);
 	movieMode();
 }
@@ -119,10 +123,13 @@ function movieMode() {
 		const img = document.querySelector("img");
 
 		if (searchTerm) {
-			getMovies(SEARCH_API_MOVIES + searchTerm);
+			getMovies(
+				'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="' +
+					searchTerm
+			);
 			this.tick = this.tick.bind(this);
 			this.onInput = this.onInput.bind(this);
-			search.value = "";
+			// search.value = "";
 		} else {
 			window.location.reload();
 		}
@@ -168,18 +175,14 @@ function tvMode() {
           <span class="${getClassByRate(vote_average)}">${vote_average}</span>
             </div>
             <div class="overview">
+          <h3>Overview</h3>
           ${overview}
         </div>
 		`;
-			movieEl.img.addEventListener("click", () => {
-				console.log("clicked");
-				document.getElementById("popup").classList.add("visible");
-
-				if (!poster_path.includes("null")) {
-					main.appendChild(movieEl);
-					document.body.appendChild(sidebar);
-				}
-			});
+			if (!poster_path.includes("null")) {
+				main.appendChild(movieEl);
+				document.body.appendChild(sidebar);
+			}
 		});
 		function showHeaderTv() {
 			const topImage = document.querySelector(".imageHeader");
@@ -199,6 +202,7 @@ function tvMode() {
 			showHeaderTv();
 		}, 9000);
 		document.querySelector(".movieTab").addEventListener("click", () => {
+			movieMode();
 			clearInterval(intervalShow);
 		});
 	}
@@ -215,6 +219,7 @@ function tvMode() {
 
 	form.addEventListener("input", async function (e) {
 		e.preventDefault();
+		tvMode();
 		const headImg = document.querySelector(".imageHeader");
 		const headerOne = document.querySelector(".headerhOne");
 		const headerTwo = document.querySelector(".headerhTwo");
@@ -229,73 +234,16 @@ function tvMode() {
 
 		const searchTerm = e.target.value;
 		const img = document.querySelector("img");
-		if (mode === "movie") {
-			if (searchTerm) {
-				getMovies(SEARCH_API_MOVIES + searchTerm);
-				this.tick = this.tick.bind(this);
-				this.onInput = this.onInput.bind(this);
-				search.value = "";
-			} else {
-				window.location.reload();
-			}
-
-			// clearList();
-		} else if (mode === "tv") {
-			if (searchTerm) {
-				getShows(SEARCH_API_TV + searchTerm);
-				this.tick = this.tick.bind(this);
-				this.onInput = this.onInput.bind(this);
-				search.value = "";
-			} else {
-				window.location.reload();
-			}
-
-			clearList();
+		if (searchTerm) {
+			getShows(
+				'https://api.themoviedb.org/3/search/tv?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="' +
+					searchTerm
+			);
+			this.tick = this.tick.bind(this);
+			this.onInput = this.onInput.bind(this);
+			search.value = "";
+		} else {
+			window.location.reload();
 		}
 	});
 }
-
-const W = window.innerWidth;
-const H = window.innerHeight;
-
-function updateAnimationTiming() {
-	const animationDuration = 5 + Math.random() * 5; // [5 - 10)
-	const animationDelay = 5 + Math.random() * 10; // [5 - 15)
-
-	window.requestAnimationFrame(() => {
-		document.documentElement.style.setProperty(
-			"--animationDuration",
-			animationDuration + "s"
-		);
-		document.documentElement.style.setProperty(
-			"--animationDelay",
-			animationDelay + "s"
-		);
-	});
-
-	const timeout = (animationDuration + animationDelay) * 1000 - 100;
-
-	setTimeout(updateAnimationTiming, timeout);
-}
-
-updateAnimationTiming();
-
-document.addEventListener("mousemove", (e) => {
-	window.requestAnimationFrame(() => {
-		const X = e.clientX;
-		const Y = e.clientY;
-
-		document.documentElement.style.setProperty("--cursorX", X + "px");
-		document.documentElement.style.setProperty("--cursorY", Y + "px");
-
-		const X2 = X - ((12 * W) / 100) * (X / W - 0.5);
-		const Y2 = Y - ((12 * W) / 100) * (Y / H - 0.5);
-
-		document.documentElement.style.setProperty("--cursorX2", X2 + "px");
-		document.documentElement.style.setProperty("--cursorY2", Y2 + "px");
-	});
-});
-
-// document
-// 	.getElementById("popup")
-// 	.addEventListener("click", (e) => e.target.classList.remove("visible"));

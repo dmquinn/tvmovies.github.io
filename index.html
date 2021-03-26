@@ -23,6 +23,15 @@
 		<header>
 			<button class="movieTab" onclick="movieMode()">MOVIES</button>
 			<button class="tvTab" onclick="tvMode()">TV SHOWS</button>
+			<div class="dropdown mr-5" style="width: 200px">
+				<select name="gere" id="genre">
+					<option value="genre">Genre</option>
+					<option value="action">Action</option>
+					<option value="comedy">Comedy</option>
+					<option value="horror">Horror</option>
+					<option value="horror">Horror</option>
+				</select>
+			</div>
 			<form id="form">
 				<input
 					type="text"
@@ -50,6 +59,8 @@
 		</div>
 		<div id="popup"></div>
 		<main id="main"></main>
+		<script src="dropdown.js"></script>
 		<script src="app.js"></script>
+		<script src="flashlight.js"></script>
 	</body>
 </html>
