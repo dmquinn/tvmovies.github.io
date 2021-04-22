@@ -519,7 +519,6 @@ main {
   background-color: rgba(0, 0, 0, 0.836);
   padding: 2rem;
   position: absolute;
-  color: #f7f7f7;
   left: 0;
   bottom: 0;
   right: 0;
@@ -532,6 +531,10 @@ main {
   overflow-y: hidden;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.overview a {
+  color: #f7f7f7 !important;
 }
 
 img:hover {

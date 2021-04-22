@@ -217,7 +217,6 @@ main {
 	background-color: rgba(0, 0, 0, 0.836);
 	padding: 2rem;
 	position: absolute;
-	color: rgb(247, 247, 247);
 	left: 0;
 	bottom: 0;
 	right: 0;
@@ -228,7 +227,11 @@ main {
 	object-fit: cover;
 	overflow-y: hidden;
 	transition: 0.3s;
+	& a {
+		color: rgb(247, 247, 247) !important;
+	}
 }
+
 img:hover {
 	filter: brightness(50%);
 	transition: 0.5s;
