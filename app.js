@@ -53,6 +53,9 @@ function movieMode() {
 			stars.classList.add("stars");
 			const movieEl = document.createElement("div");
 			movieEl.classList.add("movie");
+			movieEl.setAttribute("data-toggle", "modal");
+			movieEl.setAttribute("data-target", "#largeModal");
+
 			const sidebar = document.createElement("div");
 			sidebar.classList.add("sideMovies");
 			movieEl.innerHTML = `
@@ -61,9 +64,9 @@ function movieMode() {
           <h3>${title}</h3>
           <span class="${getClassByRate(vote_average)}">${vote_average}</span>
             </div>
-            <div class="overview">
+            <div class="overview"><a href="#" data-taget="#largeModal" data-toggle="modal">
           
-          ${overview}
+          ${overview}</a>
         </div>
 		`;
 
@@ -112,7 +115,6 @@ function movieMode() {
 		const headerThree = document.querySelector(".headerhThree");
 		const overlay = document.querySelector(".overlay");
 
-		// const headSection = document.querySelector(".headSection");
 		headImg.style.height = "0px";
 		headerOne.style.opacity = "0%";
 		headerTwo.style.opacity = "0%";
@@ -136,6 +138,13 @@ function movieMode() {
 
 		clearList();
 	});
+	setTimeout(
+		function () {
+			getTitles();
+		},
+
+		1000
+	);
 }
 let clearList = () => {
 	var allImg = document.querySelectorAll("IMG");
@@ -167,7 +176,6 @@ function tvMode() {
 			sidebar.classList.add("sideShows");
 			const movieEl = document.createElement("div");
 			movieEl.classList.add("movie");
-
 			movieEl.innerHTML = `
             <img src="${IMG_PATH + poster_path}" alt="${name}">
             <div class="movie-info">
@@ -246,4 +254,37 @@ function tvMode() {
 			window.location.reload();
 		}
 	});
+}
+let title = "";
+let embedCode = "";
+function getTitles() {
+	const aTag = document.querySelectorAll(".movie");
+	console.log(aTag);
+	for (let i = 0; i < aTag.length; i++) {
+		aTag[i].addEventListener("click", () => {
+			console.log("click");
+			title = aTag[i].childNodes[1].alt;
+			youtube();
+			// setVideo();
+		});
+	}
+}
+
+async function youtube() {
+	await fetch(
+		`https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyDUppjf_r8veyOTZQ9PCFwlburDc9693-c&type=video&q=${title}` +
+			`trailer`
+	)
+		.then((result) => {
+			const newRes = result.json();
+			return newRes;
+		})
+		.then((newRes) => {
+			embedCode = newRes.items[0].id.videoId;
+		})
+		.catch((err) => {
+			console.log(err.response);
+		});
+	const iframe = document.querySelector("iframe");
+	iframe.setAttribute("src", `https://www.youtube.com/embed/${embedCode}`);
 }

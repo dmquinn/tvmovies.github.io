@@ -197,7 +197,10 @@ main {
 	border-radius: 3px;
 	font-weight: bold;
 }
-
+.clickTrailers h1 {
+	z-index: 99999;
+	position: relative;
+}
 .movie-info span.good {
 	color: rgb(0, 255, 170);
 }

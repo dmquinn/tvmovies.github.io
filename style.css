@@ -498,6 +498,11 @@ main {
   font-weight: bold;
 }
 
+.clickTrailers h1 {
+  z-index: 99999;
+  position: relative;
+}
+
 .movie-info span.good {
   color: #00ffaa;
 }
